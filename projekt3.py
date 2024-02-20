@@ -12,6 +12,8 @@ active = True
 os.system("cls")
 move_list = {"R": 1, "P": 3, "S": 2, "F":4, "Q":0}  # visar vad bokstäverna är till koden
 move_hands = {1: bcolors.DEFAULT + bcolors.RED + """
+  
+            
    _________
   |   |  |  \__
   /¨¨¨¨===  |  |
@@ -85,12 +87,18 @@ while active:
             cheat = True
             print(bcolors.YELLOW + bcolors.UNDERLINE + f"Ai hand:{bcolors.DEFAULT} {move_hands[ai]}")
             continue
-    if move_list[player] == ai:     #lägger till resultatet till poängräknaren 
+    if move_list[player] == ai:     #lägger till resultatet till poängräknaren
         tie = tie+1 
     elif functions.result_check == 2:
         loss = loss+1
     elif functions.result_check == 1: 
         win = win+1  
-    print("press anything to continue")
+    print(f"press 'q' to  quit or press anything else to continue")
     round_end=getwch()
+    if round_end=="q":
+        print("gg next")
+        active=False
+        break
+    else:
+        continue
     
