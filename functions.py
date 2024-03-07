@@ -1,8 +1,8 @@
 def result(result_check):
     if result_check == 1:
-        print(bcolors.YELLOW + f"Du vann")
+        print(bcolors.DEFAULT + bcolors.GREEN + f"Du vann")
     elif result_check == 2:
-        print(bcolors.RED + f"Du förlora")
+        print(bcolors.DEFAULT + bcolors.RED + f"Du förlora")
 
 
 

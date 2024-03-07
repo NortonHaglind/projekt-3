@@ -45,40 +45,56 @@ __ |¨¨|¨¨|¨¨|¨¨|
 
 while active:
     cheat = False
+    start_check = True
     ai = random.randint(1, 3)
     rounds = rounds+1
     
+    if cheat==True :
+        pass
+    else:
+        print(bcolors.DEFAULT + bcolors.YELLOW +  f"Rounds: {rounds} {bcolors.GREEN} Wins: {win} {bcolors.RED} Losses: {loss} {bcolors.DEFAULT} Ties: {tie}")
+        print(
+        bcolors.YELLOW + f"Välkommen till {bcolors.RED}Rock {bcolors.GREEN}Paper {bcolors.BLUE}Scissors! {bcolors.RED}Rock=\'R\' {bcolors.GREEN}Paper=\'P\' {bcolors.BLUE}Scissors=\'S\' {bcolors.PURPLE}Quit=\'Q\' {bcolors.YELLOW + bcolors.UNDERLINE}Fusk=\'F\'" + bcolors.DEFAULT)
 
     
+ 
     
-    os.system("cls")
-    print(bcolors.DEFAULT + bcolors.YELLOW +  f"Rounds: {rounds} Wins: {win} Losses: {loss} Ties: {tie}")
-    print(
-    bcolors.YELLOW + f"Välkommen till {bcolors.RED}Rock {bcolors.GREEN}Paper {bcolors.BLUE}Scissors! {bcolors.RED}Rock=\'R\' {bcolors.GREEN}Paper=\'P\' {bcolors.BLUE}Scissors=\'S\' {bcolors.PURPLE}Quit=\'Q\' {bcolors.YELLOW + bcolors.UNDERLINE}Fusk=\'F\'" + bcolors.DEFAULT)
-
+    
     while True:
-        player = getwch().upper()
-
-        if player not in move_list:
-            continue
-        elif move_list[player] > 0 and move_list[player] < 4:  # kollar om ditt "move" är en av 1-3
+        
+        
+        player = getwch().upper() 
+        if cheat==True:
+            pass
+        else:
+            if player in move_list:
+                os.system("cls")
+            else:
+                continue
+        
+        
+        
+        
+        if move_list[player] > 0 and move_list[player] < 4:  # kollar om ditt "move" är en av 1-3
             
-            print(bcolors.YELLOW + bcolors.UNDERLINE + f"Spelare hand: {move_hands[move_list[player]]}")  # skriver om bokstaven till handen
+            print(bcolors.YELLOW + bcolors.UNDERLINE + f"Spelare hand ⬇⬇⬇: {move_hands[move_list[player]]}")  # skriver om bokstaven till handen
+            
+            if cheat == True:
+                pass
+            else:
+               print(bcolors.UNDERLINE + bcolors.YELLOW + f"Ai hand ⬇⬇⬇: {move_hands[ai]}") 
+               
+            
             if move_list[player] == ai:
-                print(bcolors.DEFAULT + bcolors.YELLOW + f"Det blev lika")
+                print(bcolors.DEFAULT + f"Det blev lika")
             elif ai or move_list[player] == 1:
                 functions.check(move_list, player, ai)
             elif ai or move_list[player] == 2:
                 functions.check(move_list, player, ai)
-            if cheat == True:
-                break
-            else:
-               print(bcolors.UNDERLINE + bcolors.YELLOW + f"Ai hand: {move_hands[ai]}") 
-               break
-            
+            break
         elif player == "Q":
                     
-            print(bcolors.PURPLE + bcolors.UNDERLINE + f"GG next")
+            print(bcolors.PURPLE + f"GG next")
 
             active = False
 
@@ -93,12 +109,4 @@ while active:
         loss = loss+1
     elif functions.result_check == 1: 
         win = win+1  
-    print(f"press 'q' to  quit or press anything else to continue")
-    round_end=getwch()
-    if round_end=="q":
-        print("gg next")
-        active=False
-        break
-    else:
-        continue
-    
+   
