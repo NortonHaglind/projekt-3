@@ -10,7 +10,7 @@ tie = 0
 rounds = -1
 active = True
 os.system("cls")
-move_list = {"R": 1, "P": 3, "S": 2, "F":4, "Q":0}  # visar vad bokstäverna är till koden
+move_list = {"R": 1, "P": 3, "S": 2, "F":4, "Q":0, "Z":5}  # visar vad bokstäverna är till koden
 move_hands = {1: bcolors.DEFAULT + bcolors.RED + """
   
             
@@ -40,8 +40,7 @@ __ |¨¨|¨¨|¨¨|¨¨|
  \__SCISSORS___/
 """}  # skriver om siffrorna till händer.
 
-
-
+functions.start_screen()
 
 while active:
     cheat = False
@@ -49,13 +48,10 @@ while active:
     ai = random.randint(1, 3)
     rounds = rounds+1
     
-    if cheat==True :
+    if cheat==True : #så inte den overflowar
         pass
     else:
-        print(bcolors.DEFAULT + bcolors.YELLOW +  f"Rounds: {rounds} {bcolors.GREEN} Wins: {win} {bcolors.RED} Losses: {loss} {bcolors.DEFAULT} Ties: {tie}")
-        print(
-        bcolors.YELLOW + f"Välkommen till {bcolors.RED}Rock {bcolors.GREEN}Paper {bcolors.BLUE}Scissors! {bcolors.RED}Rock=\'R\' {bcolors.GREEN}Paper=\'P\' {bcolors.BLUE}Scissors=\'S\' {bcolors.PURPLE}Quit=\'Q\' {bcolors.YELLOW + bcolors.UNDERLINE}Fusk=\'F\'" + bcolors.DEFAULT)
-
+        functions.play_screen(tie, win, loss, rounds)
     
  
     
@@ -64,7 +60,7 @@ while active:
         
         
         player = getwch().upper() 
-        if cheat==True:
+        if cheat==True: #så inte handen skrivs ut två gånger
             pass
         else:
             if player in move_list:
@@ -75,7 +71,7 @@ while active:
         
         
         
-        if move_list[player] > 0 and move_list[player] < 4:  # kollar om ditt "move" är en av 1-3
+        if move_list[player] > 0 and move_list[player] < 5:  # kollar om ditt "move" är en av 1-3
             
             print(bcolors.YELLOW + bcolors.UNDERLINE + f"Spelare hand ⬇⬇⬇: {move_hands[move_list[player]]}")  # skriver om bokstaven till handen
             
@@ -103,6 +99,15 @@ while active:
             cheat = True
             print(bcolors.YELLOW + bcolors.UNDERLINE + f"Ai hand:{bcolors.DEFAULT} {move_hands[ai]}")
             continue
+        
+        elif player == "Z":
+            os.system
+            tie = 0
+            win = 0
+            loss = 0
+            rounds = 0
+            functions.start_screen()
+            functions.play_screen(tie, win, loss, rounds)
     if move_list[player] == ai:     #lägger till resultatet till poängräknaren
         tie = tie+1 
     elif functions.result_check == 2:

@@ -5,7 +5,26 @@ def result(result_check):
         print(bcolors.DEFAULT + bcolors.RED + f"Du förlora")
 
 
+def play_screen(tie, win, loss, rounds):
+    print(bcolors.DEFAULT + bcolors.YELLOW +  f"Rounds: {rounds} {bcolors.GREEN} Wins: {win} {bcolors.RED} Losses: {loss} {bcolors.DEFAULT} Ties: {tie}")
+    print(f"{bcolors.RED}Rock=\'R\' {bcolors.GREEN}Paper=\'P\' {bcolors.BLUE}Scissors=\'S\' {bcolors.PURPLE}Quit=\'Q\' {bcolors.YELLOW + bcolors.UNDERLINE}Fusk=\'F\'{bcolors.DEFAULT} {bcolors.BOLD + bcolors.YELLOW}Reset=\'Z\'" + bcolors.DEFAULT)
 
+
+def start_screen():
+    print(bcolors.YELLOW + f"Välkommen till {bcolors.RED}Rock {bcolors.GREEN}Paper {bcolors.BLUE}Scissors!")
+    
+    print("""
+         
+ /$$$$$$$  /$$$$$$$   /$$$$$$  /$$
+| $$__  $$| $$__  $$ /$$__  $$| $$
+| $$  \ $$| $$  \ $$| $$  \__/| $$
+| $$$$$$$/| $$$$$$$/|  $$$$$$ | $$
+| $$__  $$| $$____/  \____  $$|__/
+| $$  \ $$| $$       /$$  \ $$    
+| $$  | $$| $$      |  $$$$$$/ /$$
+|__/  |__/|__/       \______/ |__/
+          """
+          )
 def check(move_list,Player, Ai):
     global result_check #gör variabeln till en global.
     if move_list[Player]==1:
