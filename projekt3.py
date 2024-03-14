@@ -1,6 +1,6 @@
-# rock=1
-# scissors=2
-# paper=3
+# skapare = Norton Haglind Hilbers
+# datum = 2024/03/12
+# namn på proj. = Sten, Sax & Påse
 from msvcrt import getwch
 import functions, os, random
 from functions import bcolors
@@ -71,7 +71,7 @@ while active:
         
         
         
-        if move_list[player] > 0 and move_list[player] < 5:  # kollar om ditt "move" är en av 1-3
+        if move_list[player] > 0 and move_list[player] < 4:  # kollar om ditt "move" är en av 1-3
             
             print(bcolors.YELLOW + bcolors.UNDERLINE + f"Spelare hand ⬇⬇⬇: {move_hands[move_list[player]]}")  # skriver om bokstaven till handen
             
@@ -95,14 +95,14 @@ while active:
             active = False
 
             exit()
-        elif player == "F" and cheat == False:
+        if player == "F" and cheat == False:
             cheat = True
             print(bcolors.YELLOW + bcolors.UNDERLINE + f"Ai hand:{bcolors.DEFAULT} {move_hands[ai]}")
             continue
         
         elif player == "Z":
-            os.system
-            tie = 0
+            os.system("cls")
+            tie,  = 0
             win = 0
             loss = 0
             rounds = 0

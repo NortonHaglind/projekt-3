@@ -11,10 +11,8 @@ def play_screen(tie, win, loss, rounds):
 
 
 def start_screen():
-    print(bcolors.YELLOW + f"Välkommen till {bcolors.RED}Rock {bcolors.GREEN}Paper {bcolors.BLUE}Scissors!")
-    
-    print("""
-         
+    print(bcolors.YELLOW + f"Välkommen till")
+    print(bcolors.DEFAULT + bcolors.YELLOW + """       
  /$$$$$$$  /$$$$$$$   /$$$$$$  /$$
 | $$__  $$| $$__  $$ /$$__  $$| $$
 | $$  \ $$| $$  \ $$| $$  \__/| $$
