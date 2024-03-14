@@ -40,7 +40,7 @@ __ |¨¨|¨¨|¨¨|¨¨|
  \__SCISSORS___/
 """}  # skriver om siffrorna till händer.
 
-functions.start_screen()
+functions.start_screen()#skriver ut start skärm
 
 while active:
     cheat = False
