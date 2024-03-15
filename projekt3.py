@@ -15,7 +15,7 @@ move_hands = {1: bcolors.DEFAULT + bcolors.RED + """
   
             
    _________
-  |   |  |  \__
+  |   |  |  \__     
   /¨¨¨¨===  |  |
  /    ___/__|__|
 |    /         |
@@ -70,44 +70,47 @@ while active:
         
         
         
-        
-        if move_list[player] > 0 and move_list[player] < 4:  # kollar om ditt "move" är en av 1-3
-            
-            print(bcolors.YELLOW + bcolors.UNDERLINE + f"Spelare hand ⬇⬇⬇: {move_hands[move_list[player]]}")  # skriver om bokstaven till handen
-            
-            if cheat == True:
-                pass
-            else:
-               print(bcolors.UNDERLINE + bcolors.YELLOW + f"Ai hand ⬇⬇⬇: {move_hands[ai]}") 
-               
-            
-            if move_list[player] == ai:
-                print(bcolors.DEFAULT + f"Det blev lika")
-            elif ai or move_list[player] == 1:
-                functions.check(move_list, player, ai)
-            elif ai or move_list[player] == 2:
-                functions.check(move_list, player, ai)
-            break
-        elif player == "Q":
-                    
-            print(bcolors.PURPLE + f"GG next")
+        if player in move_list: # ser om man kan göra movet
 
-            active = False
+            if move_list[player] > 0 and move_list[player] < 4:  # kollar om ditt "move" är en av 1-3
 
-            exit()
-        if player == "F" and cheat == False:
-            cheat = True
-            print(bcolors.YELLOW + bcolors.UNDERLINE + f"Ai hand:{bcolors.DEFAULT} {move_hands[ai]}")
+                print(bcolors.YELLOW + bcolors.UNDERLINE + f"Spelare hand ⬇⬇⬇: {move_hands[move_list[player]]}")  # skriver om bokstaven till handen
+
+                if cheat == True:
+                    pass
+                else:
+                   print(bcolors.UNDERLINE + bcolors.YELLOW + f"Ai hand ⬇⬇⬇: {move_hands[ai]}") 
+
+
+                if move_list[player] == ai:
+                    print(bcolors.DEFAULT + f"Det blev lika")
+                elif ai or move_list[player] == 1:
+                    functions.check(move_list, player, ai)
+                elif ai or move_list[player] == 2:
+                    functions.check(move_list, player, ai)
+                break
+            elif player == "Q":
+
+                print(bcolors.PURPLE + f"GG next")
+
+                active = False
+
+                exit()
+            elif player == "F" and cheat == False:
+                cheat = True
+                print(bcolors.YELLOW + bcolors.UNDERLINE + f"Ai hand:{bcolors.DEFAULT} {move_hands[ai]}")
+                continue
+            elif player == "Z":
+                os.system("cls")
+                tie = 0
+                win = 0
+                loss = 0
+                rounds = 0
+                functions.start_screen()
+                functions.play_screen(tie, win, loss, rounds)
+        else:
             continue
-        
-        elif player == "Z":
-            os.system("cls")
-            tie,  = 0
-            win = 0
-            loss = 0
-            rounds = 0
-            functions.start_screen()
-            functions.play_screen(tie, win, loss, rounds)
+
     if move_list[player] == ai:     #lägger till resultatet till poängräknaren
         tie = tie+1 
     elif functions.result_check == 2:
